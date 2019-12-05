@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
-import Films from '../views/Home/HomeFilms.vue'
-import Cinemas from '../views/Home/HomeCinemas.vue'
-import Center from '../views/Home/HomeCenter.vue'
+import Films from '../views/Home/Films.vue'
+import Cinemas from '../views/Home/Cinemas.vue'
+import Center from '../views/Home/Center.vue'
 import Cinema from '../views/Cinema.vue'
 import Login from '../views/Login.vue'
 import City from '../views/City.vue'
@@ -38,7 +38,7 @@ const router = new VueRouter({
           path: 'center',
           component: Center,
           meta: {
-            tabId: 3
+            tabId: 4
           }
         }
       ]
