@@ -1,12 +1,12 @@
 <template>
-  <div class="page-home">
-    <h1>首页</h1>
+  <div class="page-city">
+    <h1>城市选择页</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'City'
 }
 </script>
 

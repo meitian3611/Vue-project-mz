@@ -1,12 +1,12 @@
 <template>
-  <div class="page-home">
-    <h1>首页</h1>
+  <div class="page-home-cinemas">
+    <h1>影院列表页</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Cinemas'
 }
 </script>
 
