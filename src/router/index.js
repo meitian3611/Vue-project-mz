@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Films from '../views/Home/Films.vue'
+import NowPlaying from '../views/Home/Films/NowPlaying.vue'
+import ComingSoon from '../views/Home/Films/ComingSoon.vue'
 import Cinemas from '../views/Home/Cinemas.vue'
 import Center from '../views/Home/Center.vue'
 import Cinema from '../views/Cinema.vue'
@@ -25,7 +27,29 @@ const router = new VueRouter({
           component: Films,
           meta: {
             tabId: 1
-          }
+          },
+          children: [
+            {
+              path: 'nowPlaying',
+              name: 'nowPlaying',
+              component: NowPlaying,
+              meta: {
+                tabId: 1
+              }
+            },
+            {
+              path: 'comingSoon',
+              name: 'comingSoon',
+              component: ComingSoon,
+              meta: {
+                tabId: 1
+              }
+            },
+            {
+              path: '',
+              redirect: '/films/nowPlaying'
+            }
+          ]
         },
         {
           path: 'cinemas',

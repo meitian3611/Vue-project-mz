@@ -41,7 +41,7 @@ export default {
           id: 3,
           name: '资讯',
           icon: 'iconzixun',
-          href: 'http://www.baidu.com'
+          href: 'javascript:;'
         },
         {
           id: 4,
