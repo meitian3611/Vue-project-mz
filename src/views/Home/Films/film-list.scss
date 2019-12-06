@@ -1,0 +1,13 @@
+.film-list {
+  margin-left: 15px;
+
+  &__loadmore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    line-height: 50px;
+    background: red;
+    margin-left: -15px;
+  }
+}

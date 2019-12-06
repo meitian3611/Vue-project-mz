@@ -68,8 +68,12 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
+  &__view {
+    flex: 1;
+    overflow-y: auto;
+  }
   .mint-tabbar {
-    // position: static;
+    position: static;
     background: #fff;
     .mint-tab-item {
       color: #797d82;
