@@ -1,8 +1,14 @@
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="item in slides" :key="item">
-        <img :src="item" alt />
+      <div
+        class="swiper-slide"
+        v-for="item in slides"
+        :key="item"
+      >
+        <img
+          :src="item"
+        />
       </div>
     </div>
     <!-- 如果需要分页器 -->
@@ -32,12 +38,12 @@ export default {
   },
   mounted () {
     this.mySwiper = new Swiper(this.$el, {
-      loop: true,
       pagination: {
         el: '.swiper-pagination'
       },
       autoplay: {
         delay: 2000,
+        stopOnLastSlide: false,
         disableOnInteraction: false
       }
     })

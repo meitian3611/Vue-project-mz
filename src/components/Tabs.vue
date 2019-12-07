@@ -4,7 +4,7 @@
       class="mt-tabs__item"
       v-for="(tab, index) in tabs"
       :key="index"
-      :class="{ 'active': myValue === index }"
+      :class="{'active': myValue === index}"
       @click="myValue = index"
     >
       {{ tab }}

@@ -1,23 +1,55 @@
 <template>
   <div class="film-item">
     <div class="left">
-      <img src="https://pic.maizuo.com/usr/movie/13f8328c272f9962d457131878e5f652.jpg?x-oss-process=image/quality,Q_70" alt="">
+      <img :src="filmInfo.poster" />
     </div>
     <div class="center">
-      <h2 class="title">勇敢者游戏2：再战巅峰</h2>
-      <p class="grade">观众评分：7.9</p>
-      <p class="actors">主演：张三，李四</p>
-      <p class="info">美国 | 144分钟</p>
+      <h2 class="title">{{ filmInfo.name }}</h2>
+      <p
+        class="grade"
+        :style="{ visibility: filmInfo.grade ? '' : 'hidden' }"
+      >
+        观众评分：{{ filmInfo.grade }}
+      </p>
+      <p class="actors">主演：{{ filmInfo.actors | formatActors }}</p>
+      <p class="info">{{ filmInfo.nation }} | {{ filmInfo.runtime }}分钟</p>
     </div>
     <div class="right">
-      <button class="buy">购票</button>
+      <button
+        class="buy"
+        v-show="filmType === 'nowPlaying'"
+      >购票</button>
+      <button
+        class="buy"
+        v-show="filmType === 'comingSoon'"
+      >预购</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'FilmItem',
+  props: {
+    filmInfo: {
+      type: Object,
+      dafault () {
+        return {}
+      }
+    },
+    // 影片类型 nowPlaying  comingSoon
+    filmType: {
+      validator (value) {
+        return ['nowPlaying', 'comingSoon'].indexOf(value) !== -1
+      }
+    }
+  },
+  filters: {
+    formatActors (value) {
+      let temp = value.map(item => item.name)
+      return temp.join(',')
+    }
+  }
 }
 </script>
 
