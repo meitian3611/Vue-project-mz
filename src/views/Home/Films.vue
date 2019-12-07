@@ -5,8 +5,9 @@
       :slides="bannerList"
     ></MtSwiper>
     <mtTabs
-      v-model="curTabIndex"
+      :value="curTabIndex"
       :tabs="['正在热映', '即将上映']"
+      @Meitian="curTabIndex = $event"
     ></mtTabs>
 
     <router-view></router-view>
@@ -27,7 +28,6 @@ export default {
     return {
       bannerList: [],
       curTabIndex: this.$route.name === 'nowPlaying' ? 0 : 1 // 当前选中的下标
-
     }
   },
   watch: {

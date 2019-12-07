@@ -4,9 +4,10 @@
       class="mt-tabs__item"
       v-for="(tab, index) in tabs"
       :key="index"
+      :valueMy='index'
       :class="{'active': myValue === index}"
       @click="myValue = index"
-    >
+>
       {{ tab }}
     </li>
     <div
@@ -40,14 +41,17 @@ export default {
   },
   data () {
     return {
-      myValue: 0
+      myValue: this.value
     }
   },
   watch: {
     myValue (newVal) {
       // 通知父组件
-      this.$emit('input', newVal)
+      this.$emit('Meitian', newVal)
     }
+  },
+  created () {
+
   },
   computed: {
     lineStyle () {
