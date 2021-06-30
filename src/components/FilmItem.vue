@@ -1,7 +1,7 @@
 <template>
   <div class="film-item">
     <div class="left">
-      <img :src="filmInfo.poster" />
+      <img v-lazy="filmInfo.poster" />
     </div>
     <div class="center">
       <h2 class="title">{{ filmInfo.name }}</h2>
