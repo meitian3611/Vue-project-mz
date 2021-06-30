@@ -46,7 +46,9 @@ export default {
   },
   filters: {
     formatActors (value) {
-      let temp = value.map(item => item.name)
+      let temp = value.map(item => {
+        return item.name
+      })
       return temp.join(',')
     }
   }
@@ -89,12 +91,16 @@ export default {
     line-height: 1.5;
     padding: 0 15px;
     overflow: hidden;
+    font-size: 1rem;
 
     .title {
-      font-weight: bold;
+      color: #191a1b;
+      font-weight: normal;
     }
 
     p {
+      font-size: .8125rem;
+      color: #797d82;
       height: 24px;
       line-height: 24px;
       overflow: hidden;

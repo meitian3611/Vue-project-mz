@@ -76,6 +76,7 @@ export default {
   background: #fff;
 
   &__item {
+    font-size: .875rem;
     flex: 1;
     line-height: 50px;
     text-align: center;

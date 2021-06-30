@@ -1,6 +1,13 @@
 .film-list {
   margin-left: 15px;
-
+.film-item{
+  .right .buy{
+    color: #ff5f16;
+    background: #fff;
+    border: .0600rem solid #ff5f16;
+    border-radius: 2px;
+  }
+}
   &__loadmore {
     display: flex;
     justify-content: center;

@@ -1,9 +1,9 @@
 <template>
   <div class="page-home-films">
-    <MtSwiper
+    <!-- <MtSwiper
       class="swiper"
       :slides="bannerList"
-    ></MtSwiper>
+    ></MtSwiper> -->
     <mtTabs
       :value="curTabIndex"
       :tabs="['正在热映', '即将上映']"
@@ -17,7 +17,7 @@
 <script>
 import Swiper from '@/components/Swiper'
 import Tabs from '@/components/Tabs'
-import { getBannerList } from '../../api/bannerList'
+// import { getBannerList } from '../../api/bannerList'
 export default {
   name: 'Films',
   components: {
@@ -38,16 +38,18 @@ export default {
     }
   },
   created () {
-    getBannerList({
-      type: 2,
-      cityId: 440300,
-      k: 8601288
-    }).then(respone => {
-      let res = respone.data
-      if (res.status === 0) {
-        this.bannerList = res.data.map(item => item.imgUrl)
-      }
-    })
+    // getBannerList({
+    //   type: 2,
+    //   cityId: 440300,
+    //   k: 8601288
+    // }).then(respone => {
+    //   let res = respone.data
+    //   if (res.status === 0 && res.data) {
+    //     this.bannerList = res.data.map(item => {
+    //       return item.imgUrl
+    //     })
+    //   }
+    // })
   }
 }
 </script>

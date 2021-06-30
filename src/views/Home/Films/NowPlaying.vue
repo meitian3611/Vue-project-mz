@@ -32,7 +32,7 @@ export default {
       k: 6290999
     }).then(Response => {
       let res = Response.data
-      this.filmList = [...this.filmList, ...res.data.films]
+      this.filmList = res.data.films
     })
   }
 }
