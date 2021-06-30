@@ -1,11 +1,27 @@
 <template>
   <div class="film-list">
-    <FilmItem
+    <!-- 无限加载 -->
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+      :immediate-check="false"
+    >
+      <van-cell v-for="(item, index) in filmList" :key="index">
+        <FilmItem
+          :key="item.filmId"
+          :filmInfo="item"
+          filmType="nowPlaying"
+        ></FilmItem>
+      </van-cell>
+    </van-list>
+    <!-- <FilmItem
       v-for="item in filmList"
       :key="item.filmId"
       :filmInfo="item"
-      filmType='nowPlaying'
-    ></FilmItem>
+      filmType="nowPlaying"
+    ></FilmItem> -->
   </div>
 </template>
 
@@ -14,27 +30,47 @@ import FilmItem from '@/components/FilmItem'
 import { getFilmList } from '../../../api/bannerList'
 export default {
   name: 'NoPlaying',
-
   components: {
-    FilmItem
+    FilmItem,
   },
-  data () {
+  data() {
     return {
-      filmList: []
+      loading: false,
+      finished: false,
+      filmList: [],
+      pageNum: 1,
     }
   },
-  created () {
+  created() {
     getFilmList({
       cityId: 440300,
-      pageNum: 1,
+      pageNum: this.pageNum,
       pageSize: 10,
       type: 1,
-      k: 6290999
-    }).then(Response => {
+      k: 6290999,
+    }).then((Response) => {
       let res = Response.data
       this.filmList = res.data.films
     })
-  }
+  },
+  mounted() {},
+  methods: {
+    onLoad() {
+      // 项目中可替换为接口API
+      if (this.filmList.length >= 20) {
+        this.finished = true
+      } else {
+        setTimeout(() => {
+          this.filmList.forEach((item, index) => {
+            if (index < 10) {
+              this.filmList.push(item)
+            }
+          })
+          this.loading = false
+        }, 2000)
+      }
+    },
+  },
 }
 </script>
 
