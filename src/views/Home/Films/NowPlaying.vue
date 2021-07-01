@@ -4,7 +4,7 @@
     <van-list
       v-model="loading"
       :finished="finished"
-      finished-text="没有更多了"
+      finished-text="已经到底了~"
       @load="onLoad"
       :immediate-check="false"
     >
@@ -57,7 +57,7 @@ export default {
   methods: {
     onLoad() {
       // 项目中可替换为接口API
-      if (this.filmList.length >= 20) {
+      if (this.filmList.length >= 40) {
         this.finished = true
       } else {
         setTimeout(() => {
@@ -67,7 +67,7 @@ export default {
             }
           })
           this.loading = false
-        }, 2000)
+        }, 1000)
       }
     },
   },
