@@ -1,6 +1,6 @@
 <template>
   <div class="page-film">
-    <div class="film-header" :class="scrollTop > 40 ? 'show-film-header' : ''">
+    <div class="film-header" :class="scrollTop > 30 ? 'show-film-header' : ''">
       <div class="goBack" @click="goBack">
         <img src="../assets/leftBack.png" alt="" />
       </div>
@@ -46,6 +46,53 @@
       </div>
     </div>
     <div class="divider"></div>
+    <div class="actors">
+      <div class="actors-header">
+        <span class="actors-header-title">演职人员</span>
+      </div>
+      <div class="actors-list">
+        <ul
+          class="scroll-wrapper"
+          v-for="(item, index) in detailsData.actors"
+          :key="index"
+        >
+          <li class="scroll-item">
+            <div class="scroll-item-con">
+              <div class="actor-img">
+                <img v-lazy="item.avatarAddress" />
+              </div>
+              <span class="actor-name">{{ item.name }}</span>
+              <span class="actor-role">{{ item.role }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="photos">
+      <div class="photos-header">
+        <div class="title">剧照</div>
+        <div class="more">全部<span>(5)</span> ></div>
+      </div>
+
+      <div class="scroll-photos">
+        <ul
+          class="scroll-nav"
+          v-for="(item, index) in detailsData.photos"
+          :key="index"
+        >
+          <li class="scroll-nav-item">
+            <div class="item-img">
+              <img v-lazy="item" alt="剧照" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider" style="padding-bottom: 50px"></div>
+    <div class="btn">
+      <van-button type="warning">选座购票</van-button>
+    </div>
   </div>
 </template>
 
@@ -116,7 +163,7 @@ export default {
   .divider {
     background: #f4f4f4;
     width: 100%;
-    height: 5px;
+    height: 8px;
   }
   .film-header {
     display: flex;
@@ -213,6 +260,121 @@ export default {
     }
     .upper {
       transform: rotate(180deg);
+    }
+  }
+  .actors {
+    margin-top: 0.625rem;
+    &-header {
+      padding: 15px;
+      &-title {
+        color: #191a1b;
+      }
+    }
+    &-list {
+      display: flex;
+      padding-left: 15px;
+      height: 8.75rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none; /* firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+      .scroll-wrapper {
+        display: flex;
+        width: 100%;
+        .scroll-item {
+          width: 5.3125rem;
+          min-width: 5.3125rem;
+          padding-right: 15px;
+          &-con {
+            .actor-img {
+              width: 5.3125rem;
+              height: 5.3125rem;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+            span {
+              display: block;
+              text-align: center;
+            }
+            .actor-name {
+              padding-top: 10px;
+              font-size: 12px;
+              color: #191a1b;
+              width: 85px;
+              height: 18px;
+              display: block;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            .actor-role {
+              font-size: 12px;
+              color: #797d82;
+            }
+          }
+        }
+      }
+    }
+    &-list::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .photos {
+    &-header {
+      display: flex;
+      padding: 15px;
+      justify-content: space-between;
+      .more {
+        color: #797d82;
+        font-size: 14px;
+      }
+    }
+    .scroll-photos {
+      display: flex;
+      height: 7.1875rem;
+      padding-left: 15px;
+      scrollbar-width: none; /* firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+      overflow-x: auto;
+      overflow-y: hidden;
+      .scroll-nav {
+        display: flex;
+        width: 100%;
+        &-item {
+          padding-right: 15px;
+          width: 150px;
+          min-width: 150px;
+          height: 100px;
+          .item-img {
+            width: 100%;
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+    .scroll-photos::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .btn {
+    width: 100%;
+    .van-button {
+      width: 100%;
+      height: 50px;
+      position: fixed;
+      bottom: 0;
+    }
+    .van-button--warning {
+      background: #ff5f16;
+      border: 1px solid #ff5f16;
     }
   }
 }
