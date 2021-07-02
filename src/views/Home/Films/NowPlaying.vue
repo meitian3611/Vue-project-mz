@@ -9,11 +9,13 @@
       :immediate-check="false"
     >
       <van-cell v-for="(item, index) in filmList" :key="index">
-        <FilmItem
-          :key="item.filmId"
-          :filmInfo="item"
-          filmType="nowPlaying"
-        ></FilmItem>
+        <router-link :to="'/films/' + item.filmId">
+          <FilmItem
+            :key="item.filmId"
+            :filmInfo="item"
+            filmType="nowPlaying"
+          ></FilmItem
+        ></router-link>
       </van-cell>
     </van-list>
     <!-- <FilmItem

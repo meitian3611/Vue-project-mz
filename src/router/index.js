@@ -80,7 +80,7 @@ const router = new VueRouter({
       component: City
     },
     {
-      path: '/film/:id',
+      path: '/films/:id',
       component: Film
     }
   ]
