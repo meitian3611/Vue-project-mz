@@ -38,7 +38,10 @@
       <div class="film-nation-runtime grey-text">
         {{ detailsData.nation }} | 分钟
       </div>
-      <div class="film-synopsis grey-text" :class="downText ? '' : 'hidde'">
+      <div
+        class="film-synopsis grey-text"
+        :class="downText ? '' : 'hidde'"
+      >
         {{ detailsData.synopsis }}
       </div>
       <div class="toggle" @click="downList">
@@ -238,11 +241,11 @@ export default {
 
     .film-synopsis {
       margin-top: 12px;
-      height: 75px;
+      padding-bottom: 15px;
       transition: all 0.5s ease;
     }
     .hidde {
-      height: 38px;
+      height: 38px !important;
       overflow: hidden;
       transition: all 0.5s ease;
     }
